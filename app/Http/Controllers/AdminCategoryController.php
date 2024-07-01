@@ -72,7 +72,7 @@ class AdminCategoryController extends Controller
         $validatedData = $request->validate($rules);
       
         Category::where('id', $category->id)->update($validatedData);
-        return redirect('/dashboard/categories')->with('success', 'Post Updated');
+        return redirect('/dashboard/categories')->with('success', 'Category Updated');
     }
 
     /**
@@ -82,7 +82,7 @@ class AdminCategoryController extends Controller
     {
 
         Category::destroy($category->id);
-        return redirect('/dashboard/categories')->with('success', 'Post Deleted');
+        return redirect('/dashboard/categories')->with('success', 'Category Deleted');
     }
 
     

@@ -12,11 +12,8 @@
                         <form action="/posts" method="GET" id="search-form">
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="search" name="search"
-                                    value="{{ request('search') }}" placeholder="Search...">
+                                       value="{{ request('search') }}" placeholder="Search...">
                             </div>
-                            @foreach (request('category', []) as $category)
-                                <input type="hidden" name="category[]" value="{{ $category }}">
-                            @endforeach
                             <button type="submit" class="btn btn-primary w-100">Search</button>
                         </form>
                     </div>
@@ -31,10 +28,10 @@
                                 <div class="border p-3 rounded">
                                     @foreach ($categories as $category)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="category[]"
-                                                value="{{ $category->slug }}" id="category{{ $category->id }}"
-                                                onchange="document.getElementById('filter-form').submit()"
-                                                {{ in_array($category->slug, request('category', [])) ? 'checked' : '' }}>
+                                            <input class="form-check-input" type="radio" name="category"
+                                                   value="{{ $category->slug }}" id="category{{ $category->id }}"
+                                                   onchange="document.getElementById('filter-form').submit()"
+                                                   {{ request('category') == $category->slug ? 'checked' : '' }}>
                                             <label class="form-check-label" for="category{{ $category->id }}">
                                                 {{ $category->name }}
                                             </label>
@@ -59,12 +56,12 @@
                                             <h5 class="card-title">{{ $post->title }}</h5>
 
                                             <img src="{{ asset('storage/' . $post->image) }}"
-                                                alt="{{ $post->category->name }}" class="card-img-top img-fluid mb-3">
+                                                 alt="{{ $post->category->name }}" class="card-img-top img-fluid mb-3">
 
                                             <h7>{{ $post->category->name }}</h7>
                                             <p class="card-text mt-3">{{ Str::limit($post->excerpt, 100) }}</p>
                                             <a href="/posts/{{ $post->slug }}"
-                                                class="btn btn-primary text-decoration-none">Read More</a>
+                                               class="btn btn-primary text-decoration-none">Read More</a>
                                         </div>
                                     </div>
                                 </div>
