@@ -53,13 +53,18 @@
                                 <div class="col">
                                     <div class="card h-100">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $post->title }}</h5>
-
-                                            <img src="{{ asset('storage/' . $post->image) }}"
-                                                 alt="{{ $post->category->name }}" class="card-img-top img-fluid mb-3">
-
-                                            <h7>{{ $post->category->name }}</h7>
-                                            <p class="card-text mt-3">{{ Str::limit($post->excerpt, 100) }}</p>
+                                            <h5 class="card-title text-center">{{ $post->title }}</h5>
+                                            @if ($post->image)
+                                                <img src="{{ asset('storage/' . $post->image) }}"
+                                                     alt="{{ $post->image ? $post->category->name : 'No image found' }}"
+                                                     class="card-img-top img-fluid mb-3">
+                                            @else
+                                                <div class="text-center mb-3">
+                                                    <span class="text-muted">No image available</span>
+                                                </div>
+                                            @endif
+                                            <h7 class="mb-3">{{ $post->category->name }}</h7>
+                                            <p class="card-text mt-3">{{ Str::limit(strip_tags($post->excerpt), 100) }}</p>
                                             <a href="/posts/{{ $post->slug }}"
                                                class="btn btn-primary text-decoration-none">Read More</a>
                                         </div>

@@ -28,7 +28,7 @@
                                 <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}"
                                     href="/dashboard/posts">
                                     <span data-feather="home" class="align-text-bottom"></span>
-                                    My Post
+                                    Posts
                                 </a>
                             </li>
                             <li class="nav-item">

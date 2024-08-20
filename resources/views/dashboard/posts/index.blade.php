@@ -27,7 +27,6 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->category->name }}</td>
-                        <td><a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"> Show</a></td>
                         <td><a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"> Edit</a></td>
                         <td>
                             <form action="/dashboard/posts/{{ $post->slug }}" method="post"class="d-inline">

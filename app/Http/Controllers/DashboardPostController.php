@@ -38,7 +38,7 @@ class DashboardPostController extends Controller
     public function store(Request $request)
     {
         $validatedData=$request->validate([
-            'title'=>'required|max:255',
+            'title'=>'required|max:100',
             'slug' =>'required|unique:posts',
             'image'=>'image|file|max:5000',
             'category_id' =>'required',
@@ -80,7 +80,7 @@ class DashboardPostController extends Controller
     public function update(Request $request, Post $post)
     {
         $rules=[
-            'title'=>'required|max:255',
+            'title'=>'required|max:100',
             'category_id'=>'required',
             'image' => 'image|file|max:5000',
             'body'=>'required'
